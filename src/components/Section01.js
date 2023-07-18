@@ -3,11 +3,11 @@ import EducationImg from '../assets/1.png';
 
 const Section01 = () => {
   return (
-    <section className="container mx-auto mt-8 flex justify-between px-4">
-      <div className="image w-1/2">
-        <img className="w-full " src={EducationImg} alt="EducationImage" />
+    <section className="container mx-auto mt-8 flex flex-wrap justify-between px-4">
+      <div className="image w-full sm:w-1/2">
+        <img className="w-full" src={EducationImg} alt="EducationImage" />
       </div>
-      <div className="w-1/2 md:w-1/2 py-20">
+      <div className="w-full sm:w-1/2 py-20">
         <div className="p-4">
           <h2 className="text-3xl font-bold mb-4">Empower Your Education</h2>
           <p className="text-lg mb-4">
