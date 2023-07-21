@@ -1,0 +1,21 @@
+[
+  {
+    "_id": "aedbf57d-3aed-49ff-996d-6e15f68f5d6d",
+    "colId": "93096b33-16f2-4ba9-8517-493b228cdd48",
+    "containerId": "",
+    "name": "Create new User",
+    "url": "https://green-butcher-zremp.pwskills.app:8000/api/auth/createuser",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2023-07-21T16:19:14.834Z",
+    "modified": "2023-07-21T16:20:29.019Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"email\":\"papakapara@gmail.com\",\n  \"password\":\"papakapara\",\n  \"name\":\"papakapara\"\n}",
+      "form": []
+    },
+    "tests": []
+  }
+]
