@@ -1,6 +1,6 @@
 // Importing the required models 
 const express = require('express')
-const user = require('../models/User')
+const User = require('../models/User')
 
 //Npm Package express-validator
 const { body, validationResult } = require("express-validator");
@@ -16,7 +16,6 @@ const jwt = require('jsonwebtoken');
 
 //Importing Custom Middleware
 const fetchuser = require('../middleware/fetchuser');
-const User = require('../models/User');
 //Secret Key JWT
 const JWT_SECRET = "Kanishkisagood$oy";
 
@@ -70,7 +69,54 @@ router.post("/createuser",[
         res.status(500).json({Error:"Internal Server Error"})
     }
 })
+/*-----------------------------------Route-2----------------------------------------------------*/
+
+router.post('/login',[
+    body('email',"Enter a vaild Email").isEmail(),
+    body('password',"Password connot be Blank").exists(),
+],async(req,res)=> {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        res.status(400).json({Error:errors.array()});
+    }
+
+    const {email,password} = req.body;
+    try {
+        let user = await User.findOne({email})
+        if(!user){
+            res.status(400).json({Error:"User not Exist with this Email"})
+        }
+        const passwordCompare = await bcrypt.compare(password,user.password)
+        if(!passwordCompare){
+            res.status(400).json({Error:"Entered password is wrong"})
+        }
+        const data = {
+            user:{
+                id:user.id,
+            },
+        }
+        const authToken = jwt.sign(data,JWT_SECRET);
+        res.json({authToken})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({Error:"Internal Server Error"})
+    }
+})
+
+/*------------------------------ROUTE-3-----------------------------------------------*/
+
+// Route - 3 : Get loggedin User Details using: POST "/api/auth/getuser". Login required
 
 
+router.post("/getuser", fetchuser, async (req, res) => {
+    try {
+      const userId = req.user.id; // 64a914a8401ba63343b309fd
+      const user = await User.findById(userId).select("-password");
+      res.send(user);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Server error" });
+    }
+  });
 
 module.exports = router;

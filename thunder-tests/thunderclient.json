@@ -8,14 +8,56 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-07-21T16:19:14.834Z",
-    "modified": "2023-07-21T16:20:29.019Z",
+    "modified": "2023-07-21T17:42:57.317Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"email\":\"papakapara@gmail.com\",\n  \"password\":\"papakapara\",\n  \"name\":\"papakapara\"\n}",
+      "raw": "{\n  \"email\":\"op@gmail.com\",\n  \"password\":\"papakapara\",\n  \"name\":\"para\"\n}",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "2918fae7-92a6-4de5-955a-0c057e2d63ba",
+    "colId": "93096b33-16f2-4ba9-8517-493b228cdd48",
+    "containerId": "",
+    "name": "Login",
+    "url": "https://green-butcher-zremp.pwskills.app:8000/api/auth/login",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-07-21T16:43:46.220Z",
+    "modified": "2023-07-21T16:44:38.323Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"email\":\"papakapara@gmail.com\",\n  \"password\":\"papakapara\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "7204b264-76bb-4467-a356-c069ff88429c",
+    "colId": "93096b33-16f2-4ba9-8517-493b228cdd48",
+    "containerId": "",
+    "name": "Get User",
+    "url": "https://green-butcher-zremp.pwskills.app:8000/api/auth/getuser",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2023-07-21T16:51:10.815Z",
+    "modified": "2023-07-21T17:39:34.453Z",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json"
+      },
+      {
+        "name": "auth-token",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRiYWIwNGMwYjgwYjE1NWQ1OTgwNzMxIn0sImlhdCI6MTY4OTk2MTE0MH0.sYAA_MJF4SkVtkQwyWxUarz65d6GlbFEZjURkZwI1XQ"
+      }
+    ],
+    "params": [],
     "tests": []
   }
 ]
