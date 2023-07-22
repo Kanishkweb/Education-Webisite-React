@@ -23,22 +23,46 @@ const Navbar = ({ loadingBarRef }) => {
           <div className="flex items-center justify-between py-4">
             <div className="text-2xl font-bold">Education.com</div>
             <ul className="flex space-x-4">
-              <li>
+              <li className='bg-white  rounded-2xl px-2 py-1 hover:bg-black text-white'>
                 <NavLink
                   to="/"
                   onClick={handleClick}
-                  className="text-black font-semibold border-b-2 border-white"
+                  className="font-semibold text-black hover:text-white"
                 >
                   Home
                 </NavLink>
               </li>
-              <li>
+              <li className='bg-white  rounded-2xl px-2 py-1 hover:bg-black hover:text-white'>
+              
                 <NavLink
                   to="/contact"
                   onClick={handleClick}
-                  className="text-black font-semibold border-b-2 border-white"
+                  className="font-semibold text-black hover:text-white"
+                  
                 >
                   Contact
+                </NavLink>
+              </li>
+              <li className='bg-white  rounded-2xl px-2 py-1 hover:bg-black hover:text-white'>
+              
+                <NavLink
+                  to="/login"
+                  onClick={handleClick}
+                  className="font-semibold text-black hover:text-white"
+                  
+                >
+                  Login
+                </NavLink>
+              </li>
+              <li className='bg-white  rounded-2xl px-2 py-1 hover:bg-black hover:text-white'>
+              
+                <NavLink
+                  to="/signup"
+                  onClick={handleClick}
+                  className="font-semibold text-black hover:text-white"
+                  
+                >
+                  SignUp
                 </NavLink>
               </li>
               {/* Add more NavLink components as needed */}
