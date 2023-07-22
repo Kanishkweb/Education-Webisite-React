@@ -10,7 +10,7 @@ const Login = () => {
       const response = await fetch('https://green-butcher-zremp.pwskills.app:8000/api/auth/login',
         {
           method: "POST",
-          header: {
+          headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
@@ -20,9 +20,11 @@ const Login = () => {
         })
       const json = await response.json();
       console.log(json)
-      // if(json.success){
-      //   localStorage.setItem('token',json.authToken);
-      // }
+      if(json.success){
+        localStorage.setItem('token',json.authToken);
+        history.push('/')
+        alert("Loggedin Succesfully")
+      }
     }
 
     // Catch Statement here--

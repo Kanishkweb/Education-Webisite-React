@@ -29,10 +29,11 @@ router.post("/createuser",[
     body("password").isLength({min:6}).withMessage("Password must be 6 characters Long and must be oneSpecial character,numbers,alphabet"),
     body("name").notEmpty().withMessage("Name is required"),
 ],async(req,res) => {
+    let success = false;
     // If errros return bad request
     const errors = validationResult(req);
     if(!errors.isEmpty()){
-        return res.status(400).json({Errors:errors.array()})
+        return res.status(400).json({Errors:errors.array(),success})
     }
     try {
         const {email,password,name} = req.body;
@@ -62,11 +63,13 @@ router.post("/createuser",[
         };
         const authToken = jwt.sign(data,JWT_SECRET);
         console.log(authToken)
-        res.status(201).json({Message:"User created Successfully"});
+        success = true
+        res.status(201).json({success,Message:"User created Successfully"});
 
     } catch (error) {
+        success = false
         console.log(error)
-        res.status(500).json({Error:"Internal Server Error"})
+        res.status(500).json({success,Error:"Internal Server Error"})
     }
 })
 /*-----------------------------------Route-2----------------------------------------------------*/
@@ -75,9 +78,10 @@ router.post('/login',[
     body('email',"Enter a vaild Email").isEmail(),
     body('password',"Password connot be Blank").exists(),
 ],async(req,res)=> {
+    let success = false;
     const errors = validationResult(req);
     if(!errors.isEmpty()){
-        res.status(400).json({Error:errors.array()});
+        res.status(400).json({Error:errors.array(),success});
     }
 
     const {email,password} = req.body;
@@ -96,7 +100,8 @@ router.post('/login',[
             },
         }
         const authToken = jwt.sign(data,JWT_SECRET);
-        res.json({authToken})
+        success = true
+        res.json({success,authToken})
     } catch (error) {
         console.log(error)
         res.status(500).json({Error:"Internal Server Error"})
