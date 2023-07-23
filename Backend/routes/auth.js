@@ -74,39 +74,39 @@ router.post("/createuser",[
 })
 /*-----------------------------------Route-2----------------------------------------------------*/
 
-router.post('/login',[
-    body('email',"Enter a vaild Email").isEmail(),
-    body('password',"Password connot be Blank").exists(),
-],async(req,res)=> {
+router.post('/login', [
+    body('email', "Enter a valid Email").isEmail(),
+    body('password', "Password cannot be Blank").exists(),
+], async (req, res) => {
     let success = false;
     const errors = validationResult(req);
-    if(!errors.isEmpty()){
-        res.status(400).json({Error:errors.array(),success});
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ Error: errors.array(), success });
     }
 
-    const {email,password} = req.body;
+    const { email, password } = req.body;
     try {
-        let user = await User.findOne({email})
-        if(!user){
-            res.status(400).json({Error:"User not Exist with this Email"})
+        let user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({ Error: "User not Exist with this Email" });
         }
-        const passwordCompare = await bcrypt.compare(password,user.password)
-        if(!passwordCompare){
-            res.status(400).json({Error:"Entered password is wrong"})
+        const passwordCompare = await bcrypt.compare(password, user.password);
+        if (!passwordCompare) {
+            return res.status(400).json({ Error: "Entered password is wrong" });
         }
         const data = {
-            user:{
-                id:user.id,
+            user: {
+                id: user.id,
             },
-        }
-        const authToken = jwt.sign(data,JWT_SECRET);
-        success = true
-        res.json({success,authToken})
+        };
+        const authToken = jwt.sign(data, JWT_SECRET);
+        success = true;
+        res.json({ success, authToken });
     } catch (error) {
-        console.log(error)
-        res.status(500).json({Error:"Internal Server Error"})
+        console.log(error);
+        return res.status(500).json({ Error: "Internal Server Error" });
     }
-})
+});
 
 /*------------------------------ROUTE-3-----------------------------------------------*/
 
