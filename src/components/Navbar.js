@@ -21,7 +21,7 @@ const Navbar = ({ loadingBarRef }) => {
       <nav className="bg-pink-600 shadow-lg sticky z-10 top-0">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-4">
-            <div className="text-2xl font-bold">Education.com</div>
+            <div className="text-2xl font-bold text-white">Education.com</div>
             <ul className="flex space-x-4">
               <li className='bg-white  rounded-2xl px-2 py-1 hover:bg-black text-white'>
                 <NavLink

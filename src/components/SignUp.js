@@ -7,7 +7,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://green-butcher-zremp.pwskills.app:8000/api/auth/createuser',
+      const response = await fetch('http://localhost:8000/api/auth/createuser',
         {
           method: "POST",
           headers: {
@@ -40,7 +40,7 @@ const SignUp = () => {
 
   return (
     <div className="flex justify-center py-20">
-      <div className="flex flex-col justify-center items-center w-screen md:flex-row shadow rounded-xl max-w-7xl md:w-[50%] md:px-6 lg:px-12 py-6" style={{ maxWidth: '60%', boxShadow: '0 4px 12px rgba(255, 0, 150, 0.3)' }}>
+      <div className="popo flex flex-col justify-center items-center w-screen md:flex-row shadow rounded-xl max-w-7xl md:w-[50%] md:px-6 lg:px-12 py-6" style={{ maxWidth: '60%', boxShadow: '0 4px 12px rgba(255, 0, 150, 0.3)' }}>
         <div className="w-full md:w-1/2">
           <div className="text-xl cursor-pointer flex flex-col justify-center items-center md:mt-0">
             <h1 className="font-semibold text-xl md:text-3xl text-gray-600 m-2">Sign Up for an Account</h1>
